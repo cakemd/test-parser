@@ -12,7 +12,7 @@ $reportsDir = __DIR__ . '/reports';
  */
 $app = Application\AppInitiator::create(function (ConfigProvider $configProvider) use ($reportsDir) {
     $configProvider->initReportDirectory($reportsDir);
-    $configProvider->setReportUrlPath('http://localhost:8000/');
+    $configProvider->setReportUrlPath('http://localhost:8000/reports/');
 });
 
 $app->run()
