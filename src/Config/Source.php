@@ -148,7 +148,8 @@ class Source
             'id' => ReportDownloadAction::class,
             'class' => ReportDownloadAction::class,
             'argIdList' => [
-                ReportRepository::class
+                ReportRepository::class,
+                'config_provider'
             ],
             'tags' => ['action']
         );

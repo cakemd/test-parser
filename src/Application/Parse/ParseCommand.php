@@ -93,7 +93,7 @@ class ParseCommand extends BaseCommand
 
         if ($saveResult) {
             return function () use ($saveResult) {
-                echo sprintf('%s%s', $this->configProvider->getReportUrlPath(), $saveResult->getFilename()) . PHP_EOL;
+                echo sprintf('%s%s', $this->configProvider->getFullReportUriPath(), $saveResult->getFilename()) . PHP_EOL;
             };
         } else {
             return function () {

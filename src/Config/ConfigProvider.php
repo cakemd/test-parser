@@ -9,6 +9,8 @@ namespace CakeParser\Config;
  */
 class ConfigProvider
 {
+    private $domain;
+
     /**
      * @var string
      */
@@ -17,7 +19,7 @@ class ConfigProvider
     /**
      * @var string
      */
-    private $reportUrlPath;
+    private $reportUriPath;
 
     /**
      * @param string $reportsDir
@@ -29,12 +31,25 @@ class ConfigProvider
         return is_dir($reportsDir) || mkdir($reportsDir);
     }
 
+    public function setDomain($domain)
+    {
+        $this->domain = $domain;
+    }
+
     /**
      * @param $reportUrlPath
      */
-    public function setReportUrlPath($reportUrlPath)
+    public function setReportUriPath($reportUrlPath)
     {
-        $this->reportUrlPath = $reportUrlPath;
+        $this->reportUriPath = $reportUrlPath;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReportUriPath()
+    {
+        return $this->reportUriPath;
     }
 
     /**
@@ -48,8 +63,8 @@ class ConfigProvider
     /**
      * @return mixed
      */
-    public function getReportUrlPath()
+    public function getFullReportUriPath()
     {
-        return $this->reportUrlPath;
+        return $this->domain . $this->reportUriPath;
     }
 }

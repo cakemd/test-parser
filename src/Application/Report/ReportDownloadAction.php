@@ -5,6 +5,7 @@ namespace CakeParser\Application\Report;
 
 use CakeParser\Application\Action\BaseAction;
 use CakeParser\Application\Request\Request;
+use CakeParser\Config\ConfigProvider;
 
 /**
  * Class ReportDownloadAction
@@ -13,13 +14,25 @@ use CakeParser\Application\Request\Request;
  */
 class ReportDownloadAction extends BaseAction
 {
+    /**
+     * @var ConfigProvider
+     */
+    private $configProvider;
 
+    /**
+     * @var ReportRepository
+     */
     private $reportRepository;
 
+    /**
+     * @var string
+     */
     private $uri;
 
-    public function __construct(ReportRepository $reportRepository)
+    public function __construct(ReportRepository $reportRepository, ConfigProvider $configProvider)
     {
+        $this->configProvider = $configProvider;
+
         $this->reportRepository = $reportRepository;
     }
 
@@ -35,8 +48,8 @@ class ReportDownloadAction extends BaseAction
 
     public function run(): callable
     {
-        //get rid from '/reports/' prefix
-        $name = substr($this->uri, 9);
+        //get rid from route prefix
+        $name = substr($this->uri, strlen($this->configProvider->getReportUriPath()));
 
         $report = $this->reportRepository->findByName($name);
 
