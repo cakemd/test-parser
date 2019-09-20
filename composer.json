@@ -13,7 +13,6 @@
     },
     "require": {
         "php": "^7.1",
-        "psr/http-client": "^1.0",
         "psr/container": "^1.0"
     }
 }
