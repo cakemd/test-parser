@@ -1,7 +1,5 @@
 # test-parser
 
-##Installation
-
 To run the code you must have php 7.1.* installed and mysql db. Also you need composer.
 
 ### Download
@@ -14,6 +12,7 @@ You can run `php example.php help` to get more info.
 ##### composer
 
 Use command `composer require cakemd/serp-n-parser` to include package.
+
 *Note: you might need to set dev stability `composer config minimum-stability dev`*
 
 
